@@ -1,0 +1,52 @@
+{% extends 'Base/base.html' %}
+
+{% load static %}
+
+{% block links %}
+
+   <link rel="stylesheet" href="{% static 'products/css/aos.min.css' %} ">
+   <link rel="stylesheet" href="{% static 'products/css/hamburgers/hamburgers.min.css' %}">
+   <link rel="stylesheet" href="{% static 'products/css/owl.carousel.min.css' %}">
+   <link rel="stylesheet" href="{% static 'products/fonts/icomoon/style.css' %}">
+   <link rel="stylesheet" href="{% static 'products/css/animsition.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href=" {% static 'css/style.css' %} ">
+
+
+{% endblock %}
+
+{% block linksbottom %}
+
+  <script src=" {% static 'products/js/scripts-all.js' %} "></script>
+  <script src=" {% static 'products/js/main.js' %} "></script>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+<br> <br> <br> <br>
+    <section class="templateux-portfolio-overlap mb-5" >
+      <div id="blog" class="site-section">
+         <div class="container">
+            <div class="row">
+             <img src="{{ obj.product_image.url }}" class="img-responsive" style="height:433;width:770;">
+              <div class="col-md-8">
+                <p class="mb-5"><img src="{{ obj.product_image }}" alt="" class="img-fluid"></p>
+                <img src="{{ obj.product_image }} " alt="" class="img-fluid">
+                 <p> <b>{{ obj.product_name }}</b> </p>
+                  <article><b><i>Rules And Regulations</i></b></article>
+
+                <p>{{ obj.product_rules }} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+
+{% endblock %}

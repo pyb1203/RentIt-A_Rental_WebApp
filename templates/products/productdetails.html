@@ -1,0 +1,13 @@
+{% extends 'Base/base.html' %}
+
+
+{% block content %}
+<div class="container">
+
+    <h1 style="text-align:left;"> {{ obj.product_name }} </h1>
+
+    <img src="{{ obj.product_image.url }}" class="img-responsive" style="height:433;width:770px;">
+    <p></p>
+    <hr>
+  </div>
+{% endblock %}

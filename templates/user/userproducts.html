@@ -1,0 +1,101 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+
+{% block links %}
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'table/css/main.css' %}">
+
+
+{% endblock links %}
+
+
+
+{% block content %}
+<br><br><br><br>
+
+
+
+
+<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+					<div class="table">
+
+						<div class="row header">
+
+							<div class="cell">
+								Product Name
+							</div>
+							<div class="cell">
+								Product Rate
+							</div>
+                           <div class="cell">
+								Posted On
+							</div>
+
+                          <div class="cell">
+								Edit
+							</div><br>
+                          <div class="cell">
+								Delete
+							</div>
+
+
+						</div>
+
+{% for i in obj %}  <div>
+                      <form method="post" action="{% url 'myproducts' %}" >
+                       </div>
+  {% csrf_token %}
+
+						<div class="row">
+
+							<div class="cell" data-title="Age">
+								{{ i.product_name }}
+							</div>
+							<div class="cell" data-title="Job Title">
+                                 {{ i.product_rate }}
+							</div>
+                          <div class="cell" data-title="Full Name">
+                                 {{ i.product_date }}
+							</div>
+							<div class="cell" data-title="Location" >
+
+                           pending
+
+							</div> <br>
+
+                          	<div class="cell" data-title="Location">
+
+                           <button type="submit" name="123" value="0{{ i.id }} " type="submit" class="btn btn-warning">Delete</button>
+
+							</div>
+
+
+						</div>
+
+
+{% endfor %}
+
+
+
+					</div>
+			</div>
+		</div>
+	</div>
+</form>
+{%  endblock %}
+

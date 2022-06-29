@@ -1,0 +1,68 @@
+{% extends 'Base/base.html' %}
+
+
+{% block catagory %}
+
+
+  {% endblock catagory %}
+
+
+  {% block content %}
+
+  <form method="POST" action="{% url 'addproducts' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container">
+
+
+  <br><br> <br><hr>
+  <i class="fas fa-people-carry"> <label for="text"><b> Product Name </b></label> </i><br>
+      <input type="text" class="form-control" name="product_name" required>
+      <br>
+      <i class="fas fa-rupee-sign">  <label for="rate"><b> Cost Per day</b></label> </i><br>
+      <input type="number" class="form-control" name="product_rate" required>
+      <br>
+       <i class="fas fa-rupee-sign">  <label for="rate"><b> Late Charge</b></label> </i><br>
+       <input type="number" class="form-control" name="late_charge" required>
+      <br>
+
+  <div class="product_catagory">
+  <i class="fas fa-check-circle"> <label for="rate"><b>Choose a catagory</b></label></i><br>
+
+  <select name="drop1" class="form-control" id="sel1">
+    <option>Electronics</option>
+    <option>Household Items</option>
+	<option>Apartments</option>
+    <option>Transport</option>
+	<option>Clothes</option>
+    <option>Other</option>
+  </select>
+      <br>
+      </div>
+
+
+
+
+        <div class="rules">
+      <i class="fa fa-book" aria-hidden="true"><label for="rate"><b> <br>Rules & Regulations</b></label></i> <br>
+             <input type="text" pattern=".{20,}"   required title="any condition or deal" class="form-control form-control-lg" name="product_rules" required>
+
+
+        </div>
+
+
+       <i class="fas fa-map-marker">  <label for="rate"><br><b> Location</b></label> </i><br>
+       <input type="text" class="form-control" name="location" required>
+
+      <br>
+
+      <i class="far fa-image"><label for="image"><b> Product Image</b></label></i><br>
+    <input type="File" class="form-control" name="product_image" required>
+
+      <hr>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+{%  endblock %}
+

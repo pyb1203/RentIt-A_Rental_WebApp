@@ -1,0 +1,93 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+ <!-- Font Icon -->
+ {% block links %}
+ 
+
+    <!-- Main css -->
+  <link rel="stylesheet" href="{% static  'accounts/css/verify.css' %} ">
+{% endblock %}
+{% block content %}
+
+
+
+
+
+
+<div id="wrapper" style="margin-top: 200px;">
+    <div id="dialog">
+            <form method="POST" action="{% url 'verify' %}">
+                {% csrf_token %}
+      <button class="close">×</button>
+      <h3>Please enter the 4-digit verification code we sent via SMS:</h3>
+      <span>(we want to make sure it's you before we contact our movers)</span>
+      <div id="form">
+          <input type="text" maxLength="1"  name="one" size="1" min="0" max="9" pattern="[0-9]{1}" />
+          <input type="text" maxLength="1" name="two"  size="1" min="0" max="9" pattern="[0-9]{1}" />
+          <input type="text" maxLength="1" name="three"  size="1" min="0" max="9" pattern="[0-9]{1}" />
+          <input type="text" maxLength="1" name="four"  size="1" min="0" max="9" pattern="[0-9]{1}" />
+          <button type="submit" name="five" value="{{username}},{{email}},{{password}}" type="submit" class="btn btn-success">Done</button>
+
+      </div>
+     
+      
+      
+      <h1></h1>
+      <div>
+        Didn't receive the code?<br />
+        <a href="#">Send code again</a><br />
+  
+      </div>
+      </form>
+    </div>
+  </div>
+  {% endblock %}
+
+  <script>
+
+  $(function() {
+    'use strict';
+  
+    var body = $('body');
+  
+    function goToNextInput(e) {
+      var key = e.which,
+        t = $(e.target),
+        sib = t.next('input');
+  
+      if (key != 9 && (key < 48 || key > 57)) {
+        e.preventDefault();
+        return false;
+      }
+  
+      if (key === 9) {
+        return true;
+      }
+  
+      if (!sib || !sib.length) {
+        sib = body.find('input').eq(0);
+      }
+      sib.select().focus();
+    }
+  
+    function onKeyDown(e) {
+      var key = e.which;
+  
+      if (key === 9 || (key >= 48 && key <= 57)) {
+        return true;
+      }
+  
+      e.preventDefault();
+      return false;
+    }
+    
+    function onFocus(e) {
+      $(e.target).select();
+    }
+  
+    body.on('keyup', 'input', goToNextInput);
+    body.on('keydown', 'input', onKeyDown);
+    body.on('click', 'input', onFocus);
+  
+  })
+</script>

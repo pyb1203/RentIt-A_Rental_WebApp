@@ -1,0 +1,102 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+
+
+ <!-- Theme -->
+  <!-- Font Icon -->
+{% block links %}
+ <link rel="stylesheet" href=" {% static 'accounts/fonts/material-icon/css/material-design-iconic-font.min.css' %} ">
+
+    <!-- Main css -->
+  <link rel="stylesheet" href="{% static  'accounts/css/style.css' %} ">
+{% endblock %}
+
+{% block linksbottom %}
+<script src="{% static 'accounts/vendor/jquery/jquery.min.js' %} "></script>
+<script src=" {% static 'accounts/js/main.js' %} "></script>
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="main">
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+
+                <div class="signup-content" >
+                    <div class="signup-form" >
+
+
+
+
+
+
+
+
+
+                        <h2 class="form-title">Registration</h2>
+                        <form method="POST" action=" " class="register-form" id="register-form">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="name" placeholder="Your Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
+                            </div>
+                             <div class="form-group">
+                                <label for="number"><i class="fa fa-mobile"></i></label>
+                               <input type="tel" id="phone" name="phone"
+                               pattern="[0-9]{12}" required>
+
+                                <small>Format: 91XXXXXXXXXX </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="password1" id="re_pass" placeholder="Repeat your password"/>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src=" {% static 'accounts/images/signup-image.jpg' %}" alt="sing up image"></figure>
+                        <a href="#" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
+<script>
+    $(document).on('register',function(e){
+    e.preventDefault();
+    $.ajax({
+      type : 'POST',
+      url : 'register',
+      data : {
+           username : $('#username').val(),
+           email    :$('#email').val(),
+           password : $('#password').val(),
+           password1: $('#password1').val(),
+      },
+      success:function(){
+        alert("Created New User");
+      }
+    })
+    })
+    </script>

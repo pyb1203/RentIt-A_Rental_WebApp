@@ -1,0 +1,163 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>RentIt</title>
+  <link rel="shortcut icon" href="{% static 'image/1.png' %}" />
+
+
+
+
+
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/25f47a9d43.js" crossorigin="anonymous"></script>
+ <!--
+  <link rel="stylesheet" type="text/css" href="{% static 'css/products/addproducts.css'  %}" >
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/products/products.css'  %}" >
+   -->
+   <!--
+  <link rel="stylesheet" type="text/css" href="{% static 'css/register/userform.css'  %}" >
+  -->
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+
+
+
+
+{% block links %}
+
+  {% endblock links %}
+
+
+
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'js/jquery.js' %} "></script>
+
+
+
+
+
+ <nav class=" navbar navbar-expand-lg  fixed-top ">
+   <a class="navbar-brand" >RentIt</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" href=" {% url 'products' %}">Products<span class="sr-only">(current)</span></a>
+      </li>
+{% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'addproducts' %}">Post a Product</a>
+      </li>
+
+        {% if request.user.is_superuser %}
+   <li class="nav-item">
+        <a class="nav-link" href="{% url 'pending' %}">Approvals</a>
+      </li>
+
+{% else %}
+
+{% endif %}
+
+
+
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          DashBoard
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+          <a class="dropdown-item" href="{% url 'myproducts' %}">MyProducts</a>
+          <a class="dropdown-item" href="{% url 'rent_request' %}">Offer</a>
+          <a class="dropdown-item" href="{% url 'acc_off' %}">Accepted Offer</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'mybid' %}">Sent Request</a>
+          <a class="dropdown-item" href="{% url 'hired_products' %}">Hired Products</a>
+
+        </div>
+        {% endif %}
+
+      </li>
+
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+
+      {% if user.is_authenticated %}
+
+      <a class="nav-link" style="text-transform:uppercase;" href=""><b> {{user.username }} </b> <span class="sr-only">(current)</span></a>
+
+      <a class="nav-link" href="{% url 'logout' %} ">LOGOUT <span class="sr-only">(current)</span></a>
+
+      {% else %}
+
+      <a class="nav-link" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> <b>REGISTER</b> <span class="sr-only">(current)</span></a>
+
+      <a class="nav-link" href="{% url 'login' %} "><i class="fas fa-sign-in-alt"><b>LOGIN</b></i> <span class="sr-only">(current)</span></a>
+
+      {% endif %}
+
+    </form>
+  </div>
+</nav>
+
+
+
+{% block linksbottom %}
+
+{% endblock linksbottom %}
+
+
+
+
+
+
+{% block content %}
+
+{% endblock %}
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3"> © 2022 Copyright:
+    <a href="">RentIt</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</body>
+</html>
+
+

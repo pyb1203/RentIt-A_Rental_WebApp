@@ -1,0 +1,102 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+
+{% block links %}
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'table/css/main.css' %}">
+
+
+{% endblock links %}
+
+
+
+{% block content %}
+<br><br><br><br>
+
+{% if obj %}
+
+
+<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+					<div class="table">
+
+						<div class="row header">
+
+							<div class="cell">
+								Product Name
+							</div>
+							<div class="cell">
+								Product Rate
+							</div>
+                           <div class="cell">
+								Catagory
+							</div>
+
+                          <div class="cell">
+								Date
+							</div><br>
+                          <div class="cell">
+								Status
+							</div>
+
+
+						</div>
+
+{% for i in obj %}  <div>
+                      <form method="post" action="{% url '' %}" >
+                       </div>
+  {% csrf_token %}
+
+						<div class="row">
+
+							<div class="cell" data-title="Age">
+
+							</div>
+							<div class="cell" data-title="Job Title">
+
+							</div>
+                          <div class="cell" data-title="Full Name">
+
+							</div>
+							<div class="cell" data-title="Location" >
+
+
+
+							</div> <br>
+                          	<div class="cell" data-title="Location">
+
+
+
+							</div>
+
+
+						</div>
+
+
+{% endfor %}
+
+
+					</div>
+			</div>
+		</div>
+	</div>
+</form>
+{% endif %}
+<div style=" text-align:center; margin-top:250px;"><h3><b>Good Job Admin</b>,There are no products to verify</h3></div>
+
+{%  endblock %}
+

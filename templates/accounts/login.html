@@ -1,0 +1,28 @@
+{% extends 'Base/base.html' %}
+{% block content %}
+
+ <form action=" {% url 'login' %}" method="POST">
+     {% csrf_token %}
+  <div class="container">
+    <h1>Login</h1>
+
+    <hr>
+    <label for="text"><b>Username</b></label>
+    <input type="text" placeholder="username or Email" name="username" required>
+
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+
+    <hr>
+
+
+      <button type="submit" class="registerbtn">login</button>
+  </div>
+
+  <div class="container signin">
+    <p>need an account?create one <a href="{% url 'register' %}">Create OneS</a>.</p>
+  </div>
+</form>
+{% endblock %}

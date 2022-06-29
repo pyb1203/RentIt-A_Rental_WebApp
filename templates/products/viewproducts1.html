@@ -1,0 +1,144 @@
+{% extends 'Base/base.html' %}
+
+{% load static %}
+
+{% block links %}
+
+   <link rel="stylesheet" href="{% static 'products/css/aos.min.css' %} ">
+   <link rel="stylesheet" href="{% static 'products/css/hamburgers/hamburgers.min.css' %}">
+   <link rel="stylesheet" href="{% static 'products/css/owl.carousel.min.css' %}">
+   <link rel="stylesheet" href="{% static 'products/fonts/icomoon/style.css' %}">
+   <link rel="stylesheet" href="{% static 'products/css/animsition.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href=" {% static 'css/style.css' %} ">
+   <link rel="stylesheet" href=" {% static 'pd/pd.css' %} ">
+
+
+{% endblock %}
+
+{% block linksbottom %}
+
+  <script src=" {% static 'products/js/scripts-all.js' %} "></script>
+  <script src=" {% static 'products/js/main.js' %} "></script>
+
+{% endblock %}
+
+
+{% block content %}
+<br> <br><br> <br> <br>
+
+        <div class="container">
+        	<div class="row">
+               <div class="col-xs-4 item-photo">
+                    <img style=" height:600px;width:600px; margin-right:17px;" src="{{ obj.product_image.url }}" />
+                </div>
+                <div class="col-xs-5" style="border:0px solid gray">
+                    <!-- Datos del vendedor y titulo del producto -->
+                    <h3 style="margin-top:145px;" >{{ obj.product_name }}</h3>
+
+                    <!-- Precios -->
+                    <h6 class="title-price"><small>Cost Per Day</small></h6>
+                    <h3 style="margin-top:0px;">₹ {{ obj.product_rate }} </h3>
+                    <h6 class="title-price"><small>Late Charge</small></h6>
+                    <h3 style="margin-top:0px;">₹ {{ obj.late_charge }} </h3>
+                    <h6 class="title-price"><small>Location</small></h6>
+                    <h3 style="margin-top:0px;">{{ obj.location }} </h3>
+
+
+
+                    <!-- Detalles especificos del producto -->
+                    <div class="section">
+
+                    </div>
+                    <div class="section" style="padding-bottom:5px;">
+
+                    </div>
+                    <div class="section" style="padding-bottom:20px;">
+
+                        <div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {% if request.user == obj.user %}
+
+                            {% else %}
+
+                     <form   method="post"  action="{% url 'prebooking' %}">
+                         {% csrf_token %}
+                        <div class="form-group">
+                           <div class="input-group mb-3">
+                               <div class="first">
+                               <label for="StartDate">StartDate</label>
+
+                             <input type="date" class="form-control placeholder hide-on-focus" name="start" data-date-format="DD MMMM YYYY"
+                                    value="8-10-2019" required
+                                     ><br> <br>
+
+                                   <label for="From">EndDate</label>
+
+                             <input type="date" class="form-control placeholder hide-on-focus"  name="end" data-date-format="DD MMMM YYYY"
+                                    value="8-10-2019" required>
+                                   <br><br>
+                             <label for="From">PickingPoint</label>
+                              <input type="text" class="form-control placeholder hide-on-focus" name="location" placeholder="Picking Point"  required/>
+                                   <br>
+                                   <div class="switch-wrap d-flex justify-content-between">
+								<p>Agree all the terms</p>
+
+									<input type="checkbox" id="confirm-checkbox">
+									<label for="confirm-checkbox"></label>
+							</div>
+                                   </div>
+                           </div>
+                        </div>
+                        <button type="submit" name="product_id" value="{{obj.id}}" class="btn btn-primary btn-sm">Make Request</button>
+                     </form>
+
+                        </div>
+                    </div>
+                    <!-- Botones de compra -->
+                </div>
+
+                <div class="col-xs-9">
+                    <ul class="menu-items">
+                        <li class="active">Tearms & Condition</li>
+
+                    </ul>
+                    <div style="width:100%;border-top:1px solid silver">
+                        <p style="padding:15px;">
+                            <small>
+                            {{ obj.product_rules }}
+                            </small>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+<br> <br> <br> <br>
+
+
+
+{% endif %}
+{% endblock %}

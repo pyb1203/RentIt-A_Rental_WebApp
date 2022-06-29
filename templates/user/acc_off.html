@@ -1,0 +1,93 @@
+{% extends 'Base/base.html' %}
+{% load staticfiles %}
+
+
+
+{% load mathfilters %}
+{% block links %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'pd/jb.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'pd/fb.css' %}">
+
+{% endblock links %}
+
+
+{% block content %}
+
+<br><br><br><br><br><br>
+
+<div class="container">
+	<div class="row">
+        {% if object %}
+		<h2 class="text-center" style="margin-left: 367px;margin-bottom: 10px;">Your Product On rent</h2>
+	</div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <form method="post" action="{% url 'rent_request' %}" >
+                  {% csrf_token %}
+<table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    				<thead>
+						<tr>
+							<th>Product Name</th>
+							<th>Booked By</th>
+							<th>Starting Date</th>
+							<th>Return Date</th>
+                            <th>PickupLocation</th>
+							<th>Status</th>
+
+
+
+
+
+						</tr>
+					</thead>
+
+
+	{% for i in object %}
+
+
+					<tbody>
+						<tr>
+							<td>{{i.product_name}}</td>
+							<td>{{i.user}}</td>
+
+							<td>{{i.start_date}}</td>
+							<td>{{i.end_date}}</td>
+                            <td>{{ i.location }}</td>
+                            <td>On going</td>
+
+
+						</tr>
+
+
+          </tbody>
+{% endfor %}
+
+				</table>
+</form>
+
+	</div>
+	</div>
+    {% else %}
+
+<h1 style="padding-top:100px;padding-left:250px;">Nobody requested your product yet</h1>
+</div>
+
+
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}

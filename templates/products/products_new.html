@@ -1,0 +1,79 @@
+{% extends 'Base/base.html' %}
+
+{% load static %}
+
+{% block links %}
+
+   <link rel="stylesheet" href="{% static 'products/css/aos.min.css' %} ">
+   <link rel="stylesheet" href="{% static 'products/css/hamburgers/hamburgers.min.css' %}">
+   <link rel="stylesheet" href="{% static 'products/css/owl.carousel.min.css' %}">
+   <link rel="stylesheet" href="{% static 'products/fonts/icomoon/style.css' %}">
+   <link rel="stylesheet" href="{% static 'products/css/animsition.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href=" {% static 'products/css/style.css' %} ">
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% block linksbottom %}
+
+  <script src=" {% static 'products/js/scripts-all.js' %} "></script>
+  <script src=" {% static 'products/js/main.js' %} "></script>
+
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="js-animsition animsition" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out">
+
+
+
+
+    <!-- END templateux-navbar -->
+    <section class="templateux-hero"  data-scrollax-parent="true">
+      <!-- <div class="cover" data-scrollax="properties: { translateY: '30%' }"><img src="images/hero_2.jpg" /></div> -->
+      <div class="container">
+        <div class="row align-items-center justify-content-center intro">
+          <div class="col-md-10" data-aos="fade-up">
+            <h1>Products</h1>
+            <p class="lead">Rent products TempoRary.</p>
+            <a href="#next" class="go-down js-smoothscroll"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END templateux-hero -->
+    <section class="templateux-portfolio-overlap mb-5" id="next">
+      <div class="container-fluid">
+        <div class="row">
+            {% for object in obj %}
+          <div class="col-md-6" data-aos="fade-up">
+            <a class="project animsition-link" href="{% url 'productdetails' object.id %}">
+              <figure>
+                <img src="{{ object.product_image.url }}" alt="Free Template" class="img-fluid">
+              </figure>
+              <div class="project-hover">
+                <div class="project-hover-inner">
+                  <h2>{{ object.product_name }}</h2>
+                  <span>View Product</span>
+                </div>
+              </div>
+            </a>
+          </div>
+            {% endfor %}
+        </div>
+        <!-- END row -->
+      </div>
+    </section>
+
+
+  </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'Base/base.html' %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+<div class="jumbotron">
+	<h1 style="text-align:center;"><b>Temporary Rent</b></h1>
+</div>
+
+	<section class="products">
+        {% for i in obj %}
+		<div class="product-card">
+			<div class="product-image">
+				<!--<img src="{{ i.product_image.url }}">-->
+                <a href="{% url 'productdetails' i.id %}" title=""><img src="{{ i.product_image.url }}" class="img-responsive"></a>
+			</div>
+
+			<div class="product-info">
+                <h5><a href="{% url 'productdetails' i.id %}" class="text-decoration-none">{{ i.product_name }}</a></h5>
+				<h6>{{  i.product_date }}</h6>
+				{% if i.product_review == 0 %}
+				<h6></h6>
+				{% else %}
+				<h6> {{ i.product_review }} reviews</h6>
+				{% endif %}
+				<h6> Posted at {{i.product_date }}</h6>
+			</div>
+		</div>
+		{% endfor %}
+	</section>
+{% endblock %}
+
