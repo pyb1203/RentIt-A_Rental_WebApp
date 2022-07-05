@@ -1,0 +1,1 @@
+RentIt – A Rental WebApp allows users to rent their belongings as well as they can also request and use (after the request is accepted) the products from the list of already rented products. To authenticate the user by the OTP through SMS, this webapp uses Twilio service.
